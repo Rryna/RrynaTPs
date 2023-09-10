@@ -1,0 +1,52 @@
+local player = game.Players.LocalPlayer
+local gui = Instance.new("ScreenGui")
+gui.Name = "CustomGui"
+gui.ResetOnSpawn = false
+gui.DisplayOrder = 10
+gui.Parent = player.PlayerGui
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 200, 0, 200)
+frame.Position = UDim2.new(0.5, -100, 0.5, -100)
+frame.AnchorPoint = Vector2.new(0.5, 0.5)
+frame.BackgroundColor3 = Color3.new(1, 1, 1)
+frame.Parent = gui
+
+local textBox = Instance.new("TextBox")
+textBox.Size = UDim2.new(0.8, 0, 0.1, 0)
+textBox.Position = UDim2.new(0.1, 0, 0.4, 0)
+textBox.Parent = frame
+
+local okButton = Instance.new("TextButton")
+okButton.Size = UDim2.new(0.3, 0, 0.1, 0)
+okButton.Position = UDim2.new(0.35, 0, 0.55, 0)
+okButton.BackgroundColor3 = Color3.new(0, 0.5, 0)
+okButton.Text = "OK"
+okButton.TextColor3 = Color3.new(1, 1, 1)
+okButton.Parent = frame
+
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0.05, 0, 0.05, 0)
+closeButton.Position = UDim2.new(0.9, 0, 0.05, 0)
+closeButton.BackgroundColor3 = Color3.new(1, 0, 0)
+closeButton.Text = "×"
+closeButton.TextColor3 = Color3.new(1, 1, 1)
+closeButton.Parent = frame
+
+okButton.MouseButton1Click:Connect(function()
+    if textBox.Text == "rryna" then
+        gui:Destroy()
+        loadstring(game:HttpGet('https://raw.githubusercontent.com/Rryna/RrynaTP/main/Teleporter'))()
+    else
+        local errorLabel = Instance.new("TextLabel")
+        errorLabel.Size = UDim2.new(0.8, 0, 0.1, 0)
+        errorLabel.Position = UDim2.new(0.1, 0, 0.7, 0)
+        errorLabel.Text = "Bu key yanlış"
+        errorLabel.TextColor3 = Color3.new(1, 0, 0)
+        errorLabel.Parent = frame
+    end
+end)
+
+closeButton.MouseButton1Click:Connect(function()
+    gui:Destroy()
+end)
